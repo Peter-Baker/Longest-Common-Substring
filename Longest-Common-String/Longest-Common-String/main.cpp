@@ -5,12 +5,18 @@ Author:  Peter Baker, Jacob Burton, and Kaven Arango
 Date:    Nov 19, 2020
 *********************************/
 #include <iostream>
+#include <string>
+#include "Substring.h"
+
 
 using namespace std;
 
+
 int main()
 {
+	Substring* substring = new Substring();
+	
 
-
+	delete substring;
 	return 0;
 }
