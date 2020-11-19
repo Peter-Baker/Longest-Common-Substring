@@ -1,3 +1,9 @@
+/************************
+Name: class Substring
+Purpose: to take 2 strings and output a common substring
+Notes: both input values are strings
+*********************************/
+
 #pragma once
 #include <string>
 
@@ -25,7 +31,9 @@ public:
 	int GetSubStringLength();
 
 private:
-	string s1, s2, substring;
+	string s1; //this variable will hold the first string
+	string s2; //this variable will hold the second string
+	string substring; //this variable will hold the substring
 	void Reset();
 };
 
