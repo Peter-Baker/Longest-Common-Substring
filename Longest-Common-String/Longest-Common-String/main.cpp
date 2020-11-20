@@ -14,10 +14,74 @@ using namespace std;
 
 int main()
 {
-	Substring* substring = new Substring("Test", "Test2");
-	
-	substring->MakeSubString();
+	string stringOne; //used for user input of string one
+	string stringTwo; //used for user input of string two
 
-	delete substring;
+	bool continueLoop = true; //used to continue running the program
+
+	do
+	{
+		cout << "Welcome to the Longest Common String Program. \n";
+		cout << "This program will take in 2 strings and output the common substring.\n";
+		cout << "Created by: Peter Baker, Jacob Burton, and Kaven Arango.\n" << endl;
+
+		bool keepGoing = false; //Used for doWhile loops for verification
+
+		do {
+			keepGoing = false;
+			cout << "Please enter the first string: ";
+			cin >> stringOne;
+			cout << endl;
+
+			if (stringOne.length() == 0)
+			{
+				cout << "\nThe string cannot be blank. Please try again." << endl;
+				keepGoing = true;
+			}
+		} while (keepGoing);
+
+		do {
+			keepGoing = false;
+			cout << "Please enter your second string: ";
+			cin >> stringTwo;
+			cout << endl;
+
+			if (stringTwo.length() == 0)
+			{
+				cout << "\nThe string cannot be blank. Please try again." << endl;
+				keepGoing = true;
+			}
+		} while (keepGoing);
+
+		Substring* substring = new Substring(stringOne, stringTwo); //Creating substring object with 2 strings as parameters
+	
+		substring->MakeSubString(); //Making substring
+
+		int subStringLength = substring->GetSubStringLength(); //Getting substringlength
+
+		cout << "The length of the Longest-Common-Substring is: " << subStringLength << endl;
+
+		if (subStringLength == 0)
+		{
+			cout << "The strings have nothing in common." << endl;
+		}
+		else
+		{
+			cout << "The Longest-Common-Substring value is: " << substring->GetSubString() << endl;
+		}
+
+		int yesNo;
+		cout << "Do you want to do it again? 1 for Yes, 0 for No" << endl;
+		cin >> yesNo;
+
+		delete substring;
+
+		if (yesNo == 0)
+		{
+			continueLoop = false;
+		}
+
+	} while (continueLoop);
+
 	return 0;
 }
