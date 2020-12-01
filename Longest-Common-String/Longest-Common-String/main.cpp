@@ -19,18 +19,19 @@ int main()
 
 	bool continueLoop = true; //used to continue running the program
 
+	cout << "Welcome to the Longest Common String Program. \n";
+	cout << "This program will take in 2 strings and output the common substring.\n";
+	cout << "Created by: Peter Baker, Jacob Burton, and Kaven Arango.\n" << endl;
+
 	do
 	{
-		cout << "Welcome to the Longest Common String Program. \n";
-		cout << "This program will take in 2 strings and output the common substring.\n";
-		cout << "Created by: Peter Baker, Jacob Burton, and Kaven Arango.\n" << endl;
-
+		
 		bool keepGoing = false; //Used for doWhile loops for verification
 
 		do {
 			keepGoing = false;
 			cout << "Please enter the first string: ";
-			cin >> stringOne;
+			getline(cin, stringOne);
 			cout << endl;
 
 			if (stringOne.length() == 0)
@@ -43,7 +44,7 @@ int main()
 		do {
 			keepGoing = false;
 			cout << "Please enter your second string: ";
-			cin >> stringTwo;
+			getline(cin, stringTwo);
 			cout << endl;
 
 			if (stringTwo.length() == 0)
@@ -70,17 +71,26 @@ int main()
 			cout << "The Longest-Common-Substring value is: " << substring->GetSubString() << endl;
 		}
 
-		int yesNo;
-		cout << "Do you want to do it again? 1 for Yes, 0 for No" << endl;
-		cin >> yesNo;
+		bool repeatLoop = true;
+		
+		do {
+			string yesNo = "";
+			cout << "Do you want to do it again? 1 for Yes, 0 for No" << endl;
+			getline(cin, yesNo);
+			if (yesNo == "1")
+			{
+				repeatLoop = false;
+			}
+				
+				
 
+			if (yesNo == "0")
+			{
+				continueLoop = false;
+				repeatLoop = false;
+			}
+		} while (repeatLoop);
 		delete substring;
-
-		if (yesNo == 0)
-		{
-			continueLoop = false;
-		}
-
 	} while (continueLoop);
 
 	return 0;

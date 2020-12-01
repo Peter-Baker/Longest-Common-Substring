@@ -29,7 +29,39 @@ void Substring::SetStringTwo(string input)
 /*This takes 2 strings and finds the substring. Then sets that to the 'substring' variable.*/
 void Substring::MakeSubString()
 {
+	int s1l = s1.length() + 1;
+	int s2l = s2.length() + 1;
 
+	int** T =  new int*[s1l];  //Pre-allocates memory for dyanmic array
+	for (int i = 0; i < s1l; ++i)
+	{
+		T[i] = new int[s2l];
+	}
+
+	int subStringpositionx = 0;
+	int subStringLength = 0;
+	
+	for (int i = 1; i <= s1.length(); i++) {    //locates substring
+		for (int j = 1; j <= s2.length(); j++) {
+			T[i][j] = 0;
+			if (s1[i - 1] == s2[j - 1]) {
+				T[i][j] = T[i - 1][j - 1] + 1;
+				if (subStringLength < T[i][j]) {
+					subStringLength = T[i][j];
+					subStringpositionx = i;;
+				}
+			}
+		}
+	}
+	for (int i = subStringpositionx - subStringLength; i < subStringpositionx; i++) {   //compiles substring
+		substring += s1[i];
+	}
+	
+	for(int i = 0; i < s1l; ++i) //Cleans up Pre-allocated memory
+	{
+		delete[] T[i];
+	}
+	delete[] T;
 }
 
 /*Returns string one*/
